@@ -27,3 +27,4 @@ yarn-error.log*
 
 # Design handoff — full-resolution image source (not part of the served site)
 /handoff
+/handoff-landing
