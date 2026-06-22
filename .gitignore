@@ -24,3 +24,6 @@ yarn-error.log*
 
 # IDE
 /.idea
+
+# Design handoff — full-resolution image source (not part of the served site)
+/handoff

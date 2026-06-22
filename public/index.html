@@ -3,42 +3,308 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SKRATCH STUDIO — Landing page options</title>
+<title>SKRATCH STUDIO — The Cover Story</title>
+<meta name="description" content="Skratch Studio — a barbershop in Vilnius. Sharp fades, sculpted beards, hot-towel shaves. A haircut is a ritual, not an errand.">
 <link rel="stylesheet" href="brand.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  html,body{margin:0;height:100%;background:#f0eee9}
-  .ab-frame{width:100%;height:100%;border:0;display:block;background:#fff}
+  body{background:var(--negro);color:var(--blanco)}
+  .a-wrap{--edge:clamp(20px,4vw,64px);--serif:'Instrument Serif',Georgia,serif}
+  ::selection{background:var(--naranja);color:var(--negro)}
+  .a-wrap .ph{filter:grayscale(1) contrast(1.06)}
+  .a-rule{height:1px;background:rgba(212,213,207,.22);margin:0 var(--edge)}
+  .a-kick{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--naranja);font-weight:600}
+
+  /* ── COVER ─────────────────────────── */
+  .a-cover{position:relative;min-height:760px;height:96vh;max-height:980px;overflow:hidden;
+    background:var(--gris);color:var(--negro)}
+  .a-cover .photo{position:absolute;inset:0}
+  .a-cover .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+  .a-cover .photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(246,251,250,.5) 0%,rgba(246,251,250,0) 24%,rgba(246,251,250,0) 58%,rgba(246,251,250,.62) 100%)}
+  .a-cover .topline{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;justify-content:space-between;
+    align-items:center;gap:16px;flex-wrap:wrap;padding:18px var(--edge);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    border-bottom:1px solid rgba(21,24,24,.35)}
+  .a-cover .lang{display:inline-flex;gap:7px;align-items:center;letter-spacing:.18em}
+  .a-cover .lang button{font:inherit;letter-spacing:inherit;text-transform:uppercase;color:inherit;opacity:.5;padding:0;line-height:1}
+  .a-cover .lang button[aria-pressed="true"]{opacity:1;color:var(--quemado);font-weight:700}
+  .a-cover .lang .sep{opacity:.4}
+  .a-cover .mast{position:absolute;top:clamp(40px,7vw,86px);left:0;right:0;z-index:3;text-align:center;pointer-events:none}
+  .a-cover .mast h1{font-weight:800;font-size:clamp(64px,17vw,250px);line-height:.8;letter-spacing:-.04em;
+    text-transform:uppercase;color:var(--naranja)}
+  .a-cover .mast .sub{margin-top:6px;font-size:clamp(11px,1.3vw,15px);letter-spacing:.42em;text-transform:uppercase;font-weight:600}
+  .a-cover .coverlines{position:absolute;left:var(--edge);bottom:clamp(28px,5vw,64px);z-index:3;max-width:min(46%,420px);
+    display:flex;flex-direction:column;gap:14px}
+  .a-cover .cl{display:flex;gap:12px;align-items:baseline}
+  .a-cover .cl .n{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--quemado)}
+  .a-cover .cl .t{font-weight:600;font-size:clamp(15px,1.7vw,20px);line-height:1.2;letter-spacing:-.01em;text-transform:uppercase}
+  .a-cover .cl .t b{display:block;font-weight:400;font-family:var(--serif);font-style:italic;text-transform:none;
+    font-size:15px;color:#3a423f;letter-spacing:0}
+  .a-cover .price{position:absolute;right:var(--edge);bottom:clamp(28px,5vw,64px);z-index:3;text-align:right}
+  .a-cover .price .bars{display:flex;gap:2px;justify-content:flex-end;margin-bottom:8px}
+  .a-cover .price .bars i{width:2px;height:34px;background:var(--negro)}
+  .a-cover .price .bars i:nth-child(2n){height:26px}.a-cover .price .bars i:nth-child(3n){width:3px}
+  .a-cover .price small{font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+  @media(max-width:680px){
+    .a-cover .topline{font-size:10px;letter-spacing:.12em;gap:8px 12px;padding:14px var(--edge)}
+    .a-cover .mast{top:clamp(82px,20vw,108px)}
+    .a-cover .coverlines{max-width:64%}
+    .a-cover .price{display:none}
+  }
+
+  /* ── EDITOR'S LETTER ───────────────── */
+  .a-letter{padding:clamp(56px,8vw,120px) var(--edge)}
+  .a-letter .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    border-bottom:1px solid rgba(212,213,207,.2);padding-bottom:14px;margin-bottom:36px}
+  .a-letter .hd .pg{font-family:ui-monospace,monospace;font-size:12px;color:rgba(212,213,207,.55)}
+  .a-letter .body{columns:2;column-gap:clamp(28px,4vw,60px);max-width:1000px;
+    font-size:clamp(15px,1.15vw,17px);line-height:1.62;color:#d7dcd8}
+  .a-letter .body p{margin-bottom:16px;break-inside:avoid}
+  .a-letter .body p:first-child::first-letter{font-family:var(--serif);float:left;font-size:84px;line-height:.72;
+    padding:6px 12px 0 0;color:var(--naranja)}
+  @media(max-width:680px){.a-letter .body{columns:1}}
+
+  /* ── PULL QUOTE ────────────────────── */
+  .a-pq{position:relative;overflow:hidden;padding:clamp(56px,9vw,130px) var(--edge);text-align:center;border-block:1px solid rgba(212,213,207,.2)}
+  .a-pq .a-ribbon{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);width:100%;height:auto;z-index:0;pointer-events:none}
+  .a-pq .inner{position:relative;z-index:2}
+  .a-pq p{font-family:var(--serif);font-size:clamp(30px,5.2vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:18ch;margin:0 auto}
+  .a-pq p em{color:var(--blanco);font-style:italic}
+  .a-pq .by{margin-top:34px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gris)}
+
+  /* ── CONTENTS / MENU ───────────────── */
+  .a-menu{padding:clamp(56px,8vw,120px) var(--edge)}
+  .a-menu .hd{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;margin-bottom:42px}
+  .a-menu .hd h2{font-weight:800;font-size:clamp(34px,6vw,80px);letter-spacing:-.03em;text-transform:uppercase;line-height:.86}
+  .a-menu .hd .meta{text-align:right;font-size:12px;letter-spacing:.04em;color:var(--gris);line-height:1.5}
+  .a-menu .row{display:grid;grid-template-columns:46px 1fr auto;gap:20px;align-items:baseline;
+    padding:22px 0;border-top:1px solid rgba(212,213,207,.18)}
+  .a-menu .row:last-child{border-bottom:1px solid rgba(212,213,207,.18)}
+  .a-menu .row .ix{font-family:ui-monospace,monospace;font-size:13px;color:var(--quemado)}
+  .a-menu .row .nm{font-weight:600;font-size:clamp(19px,2.2vw,28px);letter-spacing:-.01em}
+  .a-menu .row .nm small{display:block;font-weight:400;font-family:var(--serif);font-style:italic;
+    font-size:15px;color:var(--gris);letter-spacing:0;margin-top:3px}
+  .a-menu .row .pr{font-weight:700;font-size:clamp(18px,2vw,24px);color:var(--naranja);font-variant-numeric:tabular-nums}
+
+  /* ── SPREAD (captioned photos) ─────── */
+  .a-spread{padding:clamp(40px,6vw,90px) var(--edge);display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+  .a-fig{display:flex;flex-direction:column;gap:10px}
+  .a-fig .ph{width:100%}
+  .a-fig img{width:100%;display:block;object-fit:cover;filter:contrast(1.03) saturate(1.03)}
+  .a-fig.big img{aspect-ratio:4/5}
+  .a-fig.tall img{aspect-ratio:3/4}
+  .a-fig.big .ph{aspect-ratio:4/5}
+  .a-fig.tall .ph{aspect-ratio:3/4}
+  .a-fig .cap{display:flex;gap:10px;font-size:12px;color:var(--gris);line-height:1.4}
+  .a-fig .cap .fg{font-family:ui-monospace,monospace;color:var(--quemado);flex:none}
+  .a-fig .cap em{font-style:normal;font-family:var(--serif);font-style:italic;font-size:13px}
+  .a-spread .col{display:grid;gap:14px}
+  @media(max-width:680px){.a-spread{grid-template-columns:1fr}}
+
+  /* ── MERCH (real mockups) ──────────── */
+  .a-merch{padding:clamp(40px,6vw,90px) var(--edge)}
+  .a-merch .hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(212,213,207,.2);
+    padding-bottom:14px;margin-bottom:24px}
+  .a-merch .hd h3{font-weight:700;font-size:clamp(20px,2.4vw,30px);text-transform:uppercase;letter-spacing:-.01em}
+  .a-merch .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .a-merch figure{margin:0}
+  .a-merch img{width:100%;aspect-ratio:3/2;object-fit:cover;background:#222}
+  .a-merch figcaption{display:flex;gap:10px;margin-top:10px;font-size:12px;color:var(--gris)}
+  .a-merch figcaption .fg{font-family:ui-monospace,monospace;color:var(--quemado)}
+  @media(max-width:680px){.a-merch .grid{grid-template-columns:1fr}}
+
+  /* ── BACK COVER ────────────────────── */
+  .a-back{padding:clamp(64px,11vw,150px) var(--edge);text-align:center}
+  .a-back .a-kick{display:block;margin-bottom:24px}
+  .a-back h2{font-weight:800;font-size:clamp(44px,11vw,168px);line-height:.84;letter-spacing:-.04em;text-transform:uppercase}
+  .a-back h2 .s{color:transparent;-webkit-text-stroke:1.4px var(--naranja)}
+  .a-back .meta{margin-top:36px;display:flex;gap:38px;justify-content:center;flex-wrap:wrap;color:var(--gris);font-size:13px;letter-spacing:.04em}
+  .a-back .book{margin-top:40px;display:inline-block;padding:17px 40px;background:var(--naranja);color:var(--negro);
+    border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;transition:.25s}
+  .a-back .book:hover{background:var(--blanco)}
+
+  /* ── FOLIO FOOTER ──────────────────── */
+  .a-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    padding:26px var(--edge);border-top:1px solid rgba(212,213,207,.18);color:var(--gris);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .a-foot img{height:16px;opacity:.85}
 </style>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="design-canvas.jsx"></script>
 </head>
 <body>
-<div id="root"></div>
-<script type="text/babel">
-const W = 1440;
-function Page({src}){
-  return <iframe className="ab-frame" src={src} scrolling="no" loading="eager" title={src}></iframe>;
-}
-function App(){
-  return (
-    <DesignCanvas>
-      <DCSection id="landing" title="SKRATCH STUDIO — Landing page" subtitle="Three directions · same brand system · click ⤢ to focus any one full-screen">
-        <DCArtboard id="a" label="A · Cover Story — magazine cover + editor's letter" width={W} height={5920}>
-          <Page src="option-a.html" />
-        </DCArtboard>
-        <DCArtboard id="b" label="B · The Kiosk — masthead, contents, bento" width={W} height={3360}>
-          <Page src="option-b.html" />
-        </DCArtboard>
-        <DCArtboard id="c" label="C · The Feature — editorial spread, ribbon, columns" width={W} height={5765}>
-          <Page src="option-c.html" />
-        </DCArtboard>
-      </DCSection>
-    </DesignCanvas>
-  );
-}
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+<div class="a-wrap" data-screen-label="Option A — Cover Story">
+
+  <!-- COVER -->
+  <header class="a-cover">
+    <div class="photo"><img src="assets/hero-studio.jpg" alt="Skratch Studio interior" fetchpriority="high" decoding="async"></div>
+    <div class="topline">
+      <span>Skratch Studio</span>
+      <span data-i18n="issue">The Barbershop Issue</span>
+      <span>Vilnius · LT</span>
+      <span class="lang" aria-label="Language / Kalba">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="lt" aria-pressed="false">LT</button>
+      </span>
+    </div>
+    <div class="mast">
+      <h1>Skratch</h1>
+      <div class="sub">Studio · Barbería</div>
+    </div>
+    <div class="coverlines">
+      <div class="cl"><span class="n">01</span><span class="t" data-i18n="cover1">Six cuts that hold<b>the only menu you need</b></span></div>
+      <div class="cl"><span class="n">02</span><span class="t" data-i18n="cover2">The hot-towel ritual<b>a shave, slowed down</b></span></div>
+      <div class="cl"><span class="n">03</span><span class="t" data-i18n="cover3">Inside the chair<b>how a fade gets built</b></span></div>
+    </div>
+    <div class="price">
+      <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <small data-i18n="priceLabel">Issue Nº 01 · 2026</small>
+    </div>
+  </header>
+
+  <!-- EDITOR'S LETTER -->
+  <section class="a-letter">
+    <div class="hd"><span class="a-kick" data-i18n="letterKick">From the chair</span><span class="pg">p. 02</span></div>
+    <div class="body">
+      <p data-i18n="letterP1">Skratch Studio is a barbershop in Vilnius built on a single idea: a haircut is a ritual, not an errand. We don't rush the clippers and we don't do template cuts — every head gets read before a single line is set.</p>
+      <p data-i18n="letterP2">The room is black, chrome and quiet. You sit, we talk, and then the work begins — sharp fades, sculpted beards, the kind of finish that still looks right on day ten. This is the first issue of who we are and what happens in the chair.</p>
+      <p data-i18n="letterP3">Walk in sharp. Leave sharper. Everything after this page is the menu, the method and the people who make it.</p>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="a-pq">
+    <svg class="a-ribbon" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-40,150 C200,40 360,40 560,120 S920,220 1120,120 S1420,40 1500,90" fill="none" stroke="#F57422" stroke-width="46" stroke-linecap="round"/>
+    </svg>
+    <div class="inner">
+      <p data-i18n="pqText">"A good cut isn't loud. It just <em>holds its shape</em> when everything else moves."</p>
+      <div class="by" data-i18n="pqBy">— Skratch Studio, head barber</div>
+    </div>
+  </section>
+
+  <!-- CONTENTS / MENU -->
+  <section class="a-menu" id="services">
+    <div class="hd">
+      <h2 data-i18n="menuH2">The Menu</h2>
+      <div class="meta" data-i18n="menuMeta">Section Ø1<br>Services &amp; rates</div>
+    </div>
+    <div class="row"><span class="ix">Ø1</span><span class="nm" data-i18n="svc1">Signature Cut<small>consultation, cut &amp; finish for your head shape</small></span><span class="pr">€28</span></div>
+    <div class="row"><span class="ix">Ø2</span><span class="nm" data-i18n="svc2">Skin Fade<small>a razor-clean gradient, blended to the skin</small></span><span class="pr">€25</span></div>
+    <div class="row"><span class="ix">Ø3</span><span class="nm" data-i18n="svc3">Beard Sculpt<small>line-up, shape &amp; hot-towel conditioning</small></span><span class="pr">€18</span></div>
+    <div class="row"><span class="ix">Ø4</span><span class="nm" data-i18n="svc4">Hot Towel Shave<small>the full ritual — straight razor, oils, cold finish</small></span><span class="pr">€22</span></div>
+    <div class="row"><span class="ix">Ø5</span><span class="nm" data-i18n="svc5">Cut &amp; Beard Combo<small>the complete reset, start to finish</small></span><span class="pr">€40</span></div>
+  </section>
+
+  <!-- SPREAD -->
+  <section class="a-spread" id="work">
+    <figure class="a-fig big">
+      <img src="assets/work-fade.jpg" alt="Barber mid-cut" loading="lazy" decoding="async">
+      <figcaption class="cap"><span class="fg">Fig. 01</span><span data-i18n="fig1">The fade, in progress. <em>Every gradient is built by eye, never guessed.</em></span></figcaption>
+    </figure>
+    <div class="col">
+      <figure class="a-fig tall">
+        <img src="assets/work-interior.jpg" alt="Studio interior" loading="lazy" decoding="async">
+        <figcaption class="cap"><span class="fg">Fig. 02</span><span data-i18n="fig2">The room — black, chrome, calm.</span></figcaption>
+      </figure>
+      <figure class="a-fig tall">
+        <img src="assets/work-tools.jpg" alt="Tools flat-lay" loading="lazy" decoding="async">
+        <figcaption class="cap"><span class="fg">Fig. 03</span><span data-i18n="fig3">The kit. Kept sharp, kept clean.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MERCH (real mockups from brand) -->
+  <section class="a-merch">
+    <div class="hd"><h3 data-i18n="merchH3">The Counter</h3><span class="a-kick" data-i18n="merchKick">Section Ø2 · Merch</span></div>
+    <div class="grid">
+      <figure>
+        <img src="assets/mockup-tee.jpg" alt="Skratch Studio tee" loading="lazy" decoding="async">
+        <figcaption><span class="fg">Fig. 04</span><span data-i18n="fig4">Studio tee — chrome logotype on premium black.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/mockup-cap.jpg" alt="Skratch Studio cap" loading="lazy" decoding="async">
+        <figcaption><span class="fg">Fig. 05</span><span data-i18n="fig5">Studio cap — embroidered chrome mark.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BACK COVER -->
+  <section class="a-back" id="visit">
+    <span class="a-kick" data-i18n="backKick">Back cover · Book the chair</span>
+    <h2 data-i18n="backH2">Take the <span class="s">chair</span></h2>
+    <div class="meta"><span>Vilniaus g. 00 · Vilnius</span><span data-i18n="hours">Tue–Sat · 10–20</span><span>+370 600 00000</span></div>
+    <a href="#" class="book" data-i18n="book">Book your chair</a>
+  </section>
+
+  <footer class="a-foot">
+    <img src="assets/wordmark-white.png" alt="Skratch Studio" loading="lazy" decoding="async">
+    <span data-i18n="footIssue">Issue Nº 01 — Vilnius — 2026</span>
+    <span>Instagram · Facebook</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // Lithuanian strings. English is the inline source (read from the DOM on load),
+  // so toggling EN restores the original markup. innerHTML is used because some
+  // strings contain inline tags (<b>, <em>, <br>, <small>, <span>).
+  var LT = {
+    issue: "Kirpyklos numeris",
+    cover1: "Šeši kirpimai, kurie laikosi<b>vienintelis meniu, kurio jums reikia</b>",
+    cover2: "Karšto rankšluosčio ritualas<b>skutimasis, sulėtintas</b>",
+    cover3: "Krėsle<b>kaip sukuriamas perėjimas</b>",
+    priceLabel: "Numeris Nº 01 · 2026",
+    letterKick: "Iš krėslo",
+    letterP1: "Skratch Studio — kirpykla Vilniuje, sukurta vienai minčiai: kirpimas yra ritualas, o ne skubotas reikalas. Neskubiname mašinėlės ir nedarome šabloninių kirpimų — kiekviena galva perskaitoma prieš nubrėžiant pirmą liniją.",
+    letterP2: "Erdvė juoda, chromuota ir tyli. Atsisėdi, pasikalbame, ir tada prasideda darbas — aštrūs perėjimai, formuotos barzdos, tokia apdaila, kuri puikiai atrodo ir dešimtą dieną. Tai pirmasis numeris apie tai, kas mes esame ir kas vyksta krėsle.",
+    letterP3: "Ateik tvarkingas. Išeik dar aštresnis. Viskas po šio puslapio — meniu, metodas ir žmonės, kurie tai kuria.",
+    pqText: "“Geras kirpimas nėra triukšmingas. Jis tiesiog <em>išlaiko formą</em>, kai viskas aplinkui juda.”",
+    pqBy: "— Skratch Studio, vyriausiasis barberis",
+    menuH2: "Meniu",
+    menuMeta: "Skyrius Ø1<br>Paslaugos ir kainos",
+    svc1: "Firminis kirpimas<small>konsultacija, kirpimas ir apdaila pagal galvos formą</small>",
+    svc2: "Skin Fade<small>peiliuko švarumo perėjimas, sulietas iki odos</small>",
+    svc3: "Barzdos formavimas<small>kontūrai, forma ir karšto rankšluosčio priežiūra</small>",
+    svc4: "Skutimas karštu rankšluosčiu<small>visas ritualas — tiesus peiliukas, aliejai, vėsi apdaila</small>",
+    svc5: "Kirpimas ir barzda<small>pilnas atnaujinimas nuo pradžios iki pabaigos</small>",
+    fig1: "Perėjimas, kuriamas. <em>Kiekvienas perėjimas daromas akimi, niekada nespėliojant.</em>",
+    fig2: "Erdvė — juoda, chromuota, rami.",
+    fig3: "Įrankiai. Aštrūs ir švarūs.",
+    merchH3: "Prekystalis",
+    merchKick: "Skyrius Ø2 · Prekės",
+    fig4: "Studijos marškinėliai — chromuotas logotipas ant juodo premium audinio.",
+    fig5: "Studijos kepurė — siuvinėtas chromuotas ženklas.",
+    backKick: "Galinis viršelis · Rezervuok krėslą",
+    backH2: "Užimk <span class=\"s\">krėslą</span>",
+    hours: "Antr–Šeš · 10–20",
+    book: "Rezervuok krėslą",
+    footIssue: "Numeris Nº 01 — Vilnius — 2026"
+  };
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var EN = {};
+  nodes.forEach(function(n){ EN[n.getAttribute('data-i18n')] = n.innerHTML; });
+
+  function apply(lang){
+    nodes.forEach(function(n){
+      var k = n.getAttribute('data-i18n');
+      var v = (lang === 'lt') ? LT[k] : EN[k];
+      if(v != null) n.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+  });
+
+  var saved; try{ saved = localStorage.getItem('lang'); }catch(e){}
+  var initial = saved || (((navigator.language || '').toLowerCase().indexOf('lt') === 0) ? 'lt' : 'en');
+  apply(initial);
+})();
 </script>
 </body>
 </html>
