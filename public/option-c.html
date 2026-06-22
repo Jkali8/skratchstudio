@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKRATCH STUDIO — The Feature</title>
+<link rel="stylesheet" href="brand.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  body{background:var(--blanco);color:var(--negro)}
+  .c-wrap{--edge:clamp(20px,5vw,90px);--serif:'Instrument Serif',Georgia,serif}
+  ::selection{background:var(--naranja);color:var(--blanco)}
+  .c-wrap .ph{background:#dadbd5;filter:grayscale(1) contrast(1.05)}
+  .c-wrap .ph::after{color:rgba(21,24,24,.45)}
+  .c-kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--quemado);font-weight:700}
+
+  /* masthead */
+  .c-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px var(--edge);
+    border-bottom:1px solid var(--negro);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .c-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px var(--edge) 18px}
+  .c-nav .bw{font-weight:900;font-size:15px;letter-spacing:.04em}
+  .c-nav .links{display:flex;gap:30px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#3a423f}
+  .c-nav a{transition:.2s}.c-nav a:hover{color:var(--quemado)}
+  @media(max-width:760px){.c-nav .links{display:none}}
+
+  /* cover headline */
+  .c-hero{padding:clamp(20px,3vw,40px) var(--edge) clamp(36px,5vw,70px)}
+  .c-hero .kick{display:block;margin-bottom:18px}
+  .c-hero .top{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:end;
+    border-bottom:1.5px solid var(--negro);padding-bottom:clamp(20px,3vw,40px)}
+  .c-hero h1{font-weight:900;font-size:clamp(52px,12vw,188px);line-height:.82;letter-spacing:-.04em;text-transform:uppercase}
+  .c-hero .right{padding-bottom:6px}
+  .c-hero .right .dek{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,32px);line-height:1.25;color:#2c3431}
+  .c-hero .right .by{margin-top:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a938f}
+  @media(max-width:760px){.c-hero .top{grid-template-columns:1fr;gap:22px}}
+
+  /* opening image + caption */
+  .c-open{padding:0 var(--edge) clamp(40px,6vw,80px)}
+  .c-open .ph{width:100%;aspect-ratio:16/8}
+  .c-open .cap{display:flex;gap:10px;margin-top:10px;font-size:12px;color:#3a423f}
+  .c-open .cap .fg{font-family:ui-monospace,monospace;color:var(--quemado)}
+  .c-open .cap em{font-style:italic;font-family:var(--serif);font-size:13px}
+
+  /* feature — multi column w/ drop cap */
+  .c-feat{padding:clamp(40px,6vw,90px) var(--edge);max-width:1180px;margin:0 auto}
+  .c-feat .lede{font-family:var(--serif);font-size:clamp(24px,3.4vw,44px);line-height:1.18;letter-spacing:-.01em;margin-bottom:38px;max-width:24ch}
+  .c-feat .lede em{font-style:italic;color:var(--quemado)}
+  .c-feat .cols{columns:3;column-gap:clamp(26px,3vw,52px);font-size:15px;line-height:1.62;color:#2c3431}
+  .c-feat .cols p{margin-bottom:15px;break-inside:avoid}
+  .c-feat .cols p:first-child::first-letter{font-family:var(--serif);float:left;font-size:76px;line-height:.7;padding:6px 10px 0 0;color:var(--naranja)}
+  @media(max-width:900px){.c-feat .cols{columns:2}}
+  @media(max-width:560px){.c-feat .cols{columns:1}}
+
+  /* statement w/ ribbon */
+  .c-state{position:relative;padding:clamp(56px,9vw,130px) var(--edge);overflow:hidden}
+  .c-ribbon{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);width:100%;height:auto;z-index:0;pointer-events:none}
+  .c-state .inner{position:relative;z-index:2;max-width:1000px;margin:0 auto;text-align:center}
+  .c-state h2{font-weight:900;font-size:clamp(30px,5vw,72px);line-height:.98;letter-spacing:-.02em;text-transform:uppercase;text-wrap:balance}
+  .c-state h2 .o{color:var(--quemado)}
+
+  /* services — contents index */
+  .c-sec{padding:clamp(50px,7vw,110px) var(--edge)}
+  .c-sec>.c-kick{margin-bottom:10px;display:block}
+  .c-sec>h2{font-weight:900;font-size:clamp(26px,4vw,52px);letter-spacing:-.02em;text-transform:uppercase;line-height:.98;margin-bottom:40px;max-width:20ch}
+  .c-list{border-top:1.5px solid var(--negro)}
+  .c-item{display:grid;grid-template-columns:64px 1.1fr 2fr auto;gap:28px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(21,24,24,.18)}
+  .c-item .ix{font-family:ui-monospace,monospace;font-size:13px;color:var(--quemado)}
+  .c-item .nm{font-weight:800;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.01em;text-transform:uppercase}
+  .c-item .d{font-size:15px;line-height:1.55;color:#3a423f}
+  .c-item .pr{font-weight:800;font-size:clamp(20px,2.2vw,28px);font-variant-numeric:tabular-nums;text-align:right}
+  @media(max-width:760px){.c-item{grid-template-columns:1fr auto;gap:6px 16px}.c-item .ix{display:none}.c-item .d{grid-column:1/-1}}
+
+  /* gallery — Milly grid w/ captions */
+  .c-gal{padding:0 var(--edge) clamp(50px,7vw,110px)}
+  .c-gal .head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+  .c-gal .head h2{font-weight:900;font-size:clamp(24px,3.4vw,44px);text-transform:uppercase;letter-spacing:-.02em}
+  .c-gal .head .meta{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.8vw,22px);color:#8a938f;text-align:right}
+  .c-gal .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:start}
+  .c-gal figure{margin:0}
+  .c-gal figure .ph{aspect-ratio:3/4;width:100%}
+  .c-gal figure:nth-child(2) .ph{aspect-ratio:3/5}
+  .c-gal figure:nth-child(4) .ph{aspect-ratio:3/5}
+  .c-gal figcaption{display:flex;gap:7px;margin-top:8px;font-size:11px;color:#3a423f;line-height:1.35}
+  .c-gal figcaption .fg{font-family:ui-monospace,monospace;color:var(--quemado);flex:none}
+  @media(max-width:760px){.c-gal .grid{grid-template-columns:1fr 1fr 1fr}.c-gal figure .ph{aspect-ratio:3/4!important}}
+
+  /* merch row */
+  .c-merch{padding:0 var(--edge) clamp(50px,7vw,110px)}
+  .c-merch .head{border-top:1.5px solid var(--negro);padding-top:16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:baseline}
+  .c-merch .head h2{font-weight:900;font-size:clamp(22px,3vw,38px);text-transform:uppercase;letter-spacing:-.02em}
+  .c-merch .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .c-merch figure{margin:0}
+  .c-merch img{width:100%;aspect-ratio:3/2;object-fit:cover;background:#ddd}
+  .c-merch figcaption{display:flex;gap:8px;margin-top:9px;font-size:12px;color:#3a423f}
+  .c-merch figcaption .fg{font-family:ui-monospace,monospace;color:var(--quemado)}
+  @media(max-width:560px){.c-merch .grid{grid-template-columns:1fr}}
+
+  /* pull quote */
+  .c-pq{padding:clamp(50px,8vw,120px) var(--edge);text-align:center;border-block:1px solid rgba(21,24,24,.18)}
+  .c-pq p{font-family:var(--serif);font-size:clamp(30px,5.2vw,72px);line-height:1.04;max-width:18ch;margin:0 auto}
+  .c-pq p em{font-style:italic;color:var(--quemado)}
+  .c-pq .by{margin-top:20px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8a938f}
+
+  /* close block */
+  .c-close{background:var(--naranja);color:var(--negro);padding:clamp(56px,9vw,140px) var(--edge)}
+  .c-close p{font-weight:800;font-size:clamp(26px,4.4vw,64px);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;max-width:24ch}
+  .c-close .meta{margin-top:40px;display:flex;gap:40px;flex-wrap:wrap;font-size:13px;font-weight:600;letter-spacing:.04em}
+  .c-close .book{margin-top:36px;display:inline-block;padding:16px 36px;background:var(--negro);color:var(--blanco);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:.2s}
+  .c-close .book:hover{background:var(--blanco);color:var(--negro)}
+
+  /* footer */
+  .c-foot{padding:30px var(--edge);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;border-top:1.5px solid var(--negro)}
+  .c-foot .bw{font-weight:900;font-size:15px}
+  .c-foot .links{display:flex;gap:24px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3a423f;flex-wrap:wrap;justify-content:flex-end}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#F6FBFA"/>
+    <text x="50" y="60" font-family="Outfit,sans-serif" font-size="36" font-weight="900" fill="#151818" text-anchor="middle">C</text>
+  </svg>
+</template>
+<div class="c-wrap" data-screen-label="Option C — The Feature">
+  <div class="c-bar"><span>Skratch Studio — The Barbershop Issue</span><span>Nº 01 · Vilnius · 2026</span></div>
+  <nav class="c-nav">
+    <span class="bw">SKRATCH STUDIO</span>
+    <div class="links"><a href="#services">Services</a><a href="#work">Work</a><a href="#visit">Visit</a><a href="#visit">Book</a></div>
+  </nav>
+
+  <header class="c-hero">
+    <span class="kick">Feature · The Barbershop Issue</span>
+    <div class="top">
+      <h1>The cut,<br>in motion</h1>
+      <div class="right">
+        <p class="dek">Inside a Vilnius barbershop where precision is the whole point — and a haircut is a ritual, not an errand.</p>
+        <div class="by">Words &amp; pictures — Skratch Studio · Nº 01</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="c-open">
+    <div class="ph" data-label="Opening spread — wide barber portrait, B&W (supply)"></div>
+    <div class="cap"><span class="fg">Fig. 01</span><span>The chair, mid-cut. <em>Every fade is built by eye, never guessed.</em></span></div>
+  </section>
+
+  <section class="c-feat">
+    <p class="lede">"We don't rush the clippers, and we don't do template cuts. <em>Every head gets read before a single line is set.</em>"</p>
+    <div class="cols">
+      <p>Skratch Studio sits on a quiet street in Vilnius, behind a black door and a chrome mark. Inside, the room is deliberately calm — no noise, no upsell, just the chair and the work.</p>
+      <p>The method is simple to describe and hard to do: read the head, agree the shape, then build it slowly. A skin fade is a gradient drawn by hand; a beard sculpt is geometry; a hot-towel shave is a ritual that refuses to be hurried.</p>
+      <p>What you leave with should still look right on day ten — that's the only test that matters. Anything that survives a week of weather, sleep and bad mirrors is a cut worth paying for.</p>
+      <p>This first issue is the studio on paper: the menu, the method, and the people who keep the clippers sharp.</p>
+    </div>
+  </section>
+
+  <section class="c-state">
+    <svg class="c-ribbon" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-40,150 C200,40 360,40 560,120 S920,220 1120,120 S1420,40 1500,90" fill="none" stroke="#F57422" stroke-width="46" stroke-linecap="round"/>
+    </svg>
+    <div class="inner"><h2>Sharp fades, <span class="o">sculpted beards</span>, and a chair that's yours for the hour.</h2></div>
+  </section>
+
+  <section class="c-sec" id="services">
+    <span class="c-kick">Section Ø1 · The Menu</span>
+    <h2>A short, sharp menu.</h2>
+    <div class="c-list">
+      <div class="c-item"><span class="ix">Ø1</span><span class="nm">Signature Cut</span><span class="d">Consultation, cut and finish, tailored to your head shape.</span><span class="pr">€28</span></div>
+      <div class="c-item"><span class="ix">Ø2</span><span class="nm">Skin Fade</span><span class="d">A razor-clean gradient, blended seamlessly to the skin.</span><span class="pr">€25</span></div>
+      <div class="c-item"><span class="ix">Ø3</span><span class="nm">Beard Sculpt</span><span class="d">Line-up, shape and hot-towel conditioning.</span><span class="pr">€18</span></div>
+      <div class="c-item"><span class="ix">Ø4</span><span class="nm">Hot Towel Shave</span><span class="d">The full ritual — straight razor, warm oils, a cold finish.</span><span class="pr">€22</span></div>
+      <div class="c-item"><span class="ix">Ø5</span><span class="nm">Cut &amp; Beard</span><span class="d">The complete reset — signature cut paired with a beard sculpt.</span><span class="pr">€40</span></div>
+    </div>
+  </section>
+
+  <section class="c-gal" id="work">
+    <div class="head"><h2>Inside the studio</h2><div class="meta">A portfolio · Nº 01</div></div>
+    <div class="grid">
+      <figure><div class="ph" data-label="Portrait (supply)"></div><figcaption><span class="fg">02</span><span>Finished cut, daylight.</span></figcaption></figure>
+      <figure><div class="ph" data-label="Fade detail (supply)"></div><figcaption><span class="fg">03</span><span>Fade detail, close crop.</span></figcaption></figure>
+      <figure><div class="ph" data-label="Interior (supply)"></div><figcaption><span class="fg">04</span><span>The room.</span></figcaption></figure>
+      <figure><div class="ph" data-label="Beard work (supply)"></div><figcaption><span class="fg">05</span><span>Beard sculpt.</span></figcaption></figure>
+      <figure><div class="ph" data-label="Tools (supply)"></div><figcaption><span class="fg">06</span><span>The kit.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="c-merch">
+    <div class="head"><h2>The Counter</h2><span class="c-kick">Section Ø2 · Merch</span></div>
+    <div class="grid">
+      <figure><img src="assets/mockup-tee.png" alt="Skratch tee"><figcaption><span class="fg">07</span><span>Studio tee — chrome logotype on premium black.</span></figcaption></figure>
+      <figure><img src="assets/mockup-cap.png" alt="Skratch cap"><figcaption><span class="fg">08</span><span>Studio cap — embroidered chrome mark.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="c-pq">
+    <p>"A good cut <em>holds its shape</em> when everything else moves."</p>
+    <div class="by">— Skratch Studio, head barber</div>
+  </section>
+
+  <section class="c-close" id="visit">
+    <p>Walk in sharp. Leave sharper.</p>
+    <div class="meta"><span>Vilniaus g. 00, Vilnius</span><span>Tue–Sat · 10:00–20:00</span><span>+370 600 00000</span></div>
+    <a href="#" class="book">Book your chair</a>
+  </section>
+
+  <footer class="c-foot">
+    <span class="bw">SKRATCH STUDIO</span>
+    <div class="links"><span>Issue Nº 01 — Vilnius — 2026</span><a href="#">Instagram</a><a href="#">Facebook</a></div>
+  </footer>
+</div>
+</body>
+</html>

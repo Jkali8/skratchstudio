@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# SKRATCH STUDIO — landing page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Static landing page for SKRATCH STUDIO, a Vilnius barbershop. Imported from the
+Claude Design project "New page design options".
 
-## Available Scripts
+The page is a **review canvas** showing three design directions side by side, so
+you can compare them live and pick one to ship:
 
-In the project directory, you can run:
+- **Option A · Cover Story** (`public/option-a.html`) — magazine-cover hero +
+  editor's letter, dark theme.
+- **Option B · The Kiosk** (`public/option-b.html`) — masthead nav, marquee,
+  bento-grid services, light theme.
+- **Option C · The Feature** (`public/option-c.html`) — editorial spread, orange
+  ribbon, multi-column feature text, light theme.
 
-### `npm start`
+All three share the brand tokens in `public/brand.css`. The comparison canvas
+(`public/index.html`) embeds the three options via the `public/design-canvas.jsx`
+viewer (React + Babel loaded from a CDN — no build step).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm start            # serves ./public at http://localhost:3000
+# or, with no dependencies:
+python3 -m http.server 3000 --directory public
+```
 
-### `npm test`
+A static server is required (the option pages load over HTTP); opening
+`index.html` directly from the filesystem will not work.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Assets
 
-### `npm run build`
+Real photography is intentionally shown as striped placeholders (`.ph`) in the
+designs. Two merch mockups load from `public/assets/`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `assets/mockup-tee.png`, `assets/mockup-cap.png` — currently **placeholder**
+  images. Replace them with the originals from the Claude Design project
+  (`assets/mockup-tee.png` / `assets/mockup-cap.png`); they exceeded the design
+  connector's download size limit, so they could not be imported automatically.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Option A footer wordmark is rendered as styled text rather than the
+`wordmark-white.png` logo image — swap in the logo later if preferred.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deploy
 
-### `npm run eject`
+It's a static site — drop `public/` on Netlify, Vercel, or any static host.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Roadmap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Pick one of A / B / C as the live single-page site.
+- Localize the chosen option to **English + Lithuanian** (language toggle).
+- Wire the "Book your chair" buttons to a booking provider (e.g. Fresha).
+- Replace placeholder photography and merch mockups with real shots.
