@@ -1,16 +1,24 @@
 # SKRATCH STUDIO — landing page
 
 Single-page landing site for SKRATCH STUDIO, a Vilnius barbershop. Static — no
-build step, no framework: plain HTML + one CSS file + images.
+build step, no framework: plain HTML with inline CSS + images.
 
 ## Sections (top → bottom)
-1. **Hero** — full-viewport editorial layout: oversized SKRATCH / STUDIO type, a
-   cut-out tee centered, chrome wordmark, burnt-orange ribbon, "Book now" button.
-2. **Services** — "SERVICES" ticker + bento grid (Haircut / Beard Trim / Hot
-   Shave / Products / Gallery, each with a book button) + vertical accent panel.
-3. **About** — marble-tee background with "The Craft" and "Skratch Signature"
-   text blocks.
-4. **Footer** — dark, centered wordmark + nav + copyright.
+1. **Hero** — 16:9 frame. Layers (back → front): B&W photo, two white "A"
+   shapes, cut-out client, orange SKRATCH STUDIO logo (fades in on load). The
+   hand-drawn crown is baked into the photo and cut-out images. Nav HOME / ABOUT / SHOP / CONTACT with a round
+   black badge centred, and an orange "BOOK NOW" pill
+   (→ https://skratchstudio.setmore.com).
+2. **Caption separator** — "FIG. 01 — The taper, finished by hand" / "N° 01 / THE WORK".
+3. **Photo spread** — orange 16:9 frame, white "A" shapes behind, five staggered
+   B&W shop photos, quote "It's not a copy, it's building, from SKRATCH."
+4. **Shop** (`#shop`) — "The Shop" / "N° 02 / Merch": feature image + Studio
+   Tee (€35) + Studio Cap (€28), "Reserve" links → setmore. Becomes a swipe
+   carousel at ≤820px.
+5. **Caption separator** — "FIG. 02 — The chair, the comb, the craft" / "N° 03 / ABOUT US".
+6. **About** (`#about`) — marble-tee background, cream frame, "The Craft" and
+   "Skratch Signature" text blocks (client copy).
+7. **Footer** — orange, black wordmark + links + copyright.
 
 ## Run locally
 ```bash
@@ -18,42 +26,42 @@ npm start            # serves ./public at http://localhost:3000
 # or, with no dependencies:
 python3 -m http.server 3000 --directory public
 ```
-A static server is required; opening `index.html` from the filesystem won't load
-the assets correctly.
 
 ## Structure
 ```
 public/                 # the live site (deployed/served)
-  index.html            # the page
-  brand.css             # shared brand tokens (colors, Outfit font, reset)
-  assets/               # web-optimized images (~2.3 MB total)
+  index.html            # the page (all CSS inline)
+  assets/
+    canva/              # hero layers (crown baked in), "A" shape, orange logo, shop + cap photos
+    iso-circle-black.png  # round badge, top-centre of hero
+    tee-hero.png        # cut-out tee (shop card)
+    tee-marble.jpg      # shop feature image + About background
+    wordmark-black.png  # footer logo
 vercel.json             # static deploy config (serve public/, no build)
-handoff-landing/        # design handoff + full-res source images (gitignored)
-handoff/                # earlier "Cover Story" design handoff (gitignored)
+handoff-skratch-canva 3/  # design handoff: reference page + full-res source images
 ```
-`public/assets/*` are compressed/resized derivatives of the originals in
-`handoff-landing/assets/*` (24 MB → ~2.3 MB). Photos are JPEG; images that need
-transparency (cut-out tee, chrome/white wordmarks, circular logo) stay PNG.
-The `handoff*` folders are the source of truth for re-exporting images and are
-not part of the served site.
+`public/assets/*` are web-ready derivatives of the handoff images (~2.6 MB
+total). Photos are JPEG; images that need transparency (cut-out, "A" shape,
+logos) stay PNG.
 
-## Brand system (`brand.css` + page `:root`)
-- `--cream` #F2EFE6 (page) · `--ink` #151818 · `--accent` #F57422 (orange) ·
-  `--quemado` #D64900 (ribbon) · `--gris` #D4D5CF
-- Body/display font **Outfit**; script accent ("barbería") **Sacramento**
-  (both via Google Fonts — no local font files).
+## Brand tokens (page `:root`)
+- Orange `#ff751f` · cream `#F2EFE6` · ink `#151818` · white `#ffffff` · grey `#D4D5CF`
+- Fonts (Google Fonts): **Space Mono** (nav, button), **Outfit** (captions,
+  about, footer), **Bodoni Moda** italic (quote)
+
+## Phone layout (≤640px)
+Overrides live in the `@media(max-width:640px)` block at the end of the `<style>`.
+- Hero fills the screen (100svh); cut-out and "A" shapes hidden, photo covers
+  with the crown kept in frame. Badge top-left, nav top-right (44px tap
+  targets), logo centred, BOOK NOW near the bottom.
+- Photo spread becomes a 2-column grid; the middle photo goes full width with
+  the quote centred on it.
+- Shop is a horizontal swipe carousel; About is left-aligned on a dark tint.
 
 ## Before launch — still to do
-- **Real content:** phone (`+370 600 00000`), address, hours, prices, social
-  links, and the nav/footer links (currently `#`) are placeholders.
-- **Real photography:** some service/gallery images are licensed Unsplash
-  stand-ins; the tee/logo/wordmark renders are brand assets. Swap in real shop
-  photography.
-- **Booking:** the "Book now" buttons link to `#` — wire to a provider (e.g.
-  Fresha) when the account is ready.
-- **Lithuanian:** this design ships in English only. The previous "Cover Story"
-  version had an EN/LT toggle; it can be re-added here on request.
+- **Placeholder content:** Contact nav link and footer links (except About)
+  are `#`; FIG. caption copy, shop prices, "Wear the chair home." and the
+  Reserve target (currently setmore) need client sign-off.
 
 ## Deploy
-Static site — `vercel.json` serves `public/` with no build step. Push to GitHub
-and import on Vercel (or `vercel --prod` via the CLI). Any static host works too.
+Static site — `vercel.json` serves `public/` with no build step.

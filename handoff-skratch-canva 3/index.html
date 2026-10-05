@@ -3,50 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SKRATCH STUDIO — Barbershop in Vilnius</title>
-<meta name="description" content="Skratch Studio — a barbershop in Vilnius built on precision and a little attitude. Sharp fades, sculpted beards, hot-towel shaves. Book your chair.">
+<title>SKRATCH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;600;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&display=swap" rel="stylesheet">
 <style>
-:root{--orange:#ff751f;--card:#fff6f6;--white:#ffffff;--ink:#000000;--cream:#F2EFE6;--ink2:#151818;--gris:#D4D5CF}
+:root{--orange:#ff751f;--card:#fff6f6;--white:#ffffff;--ink:#000000}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--white);font-family:'Space Mono',monospace;color:var(--ink)}
 a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
-
-/* ── 16:9 frames — scale proportionally via cqw ── */
 .frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;container-type:inline-size}
-
-/* ── HERO ── */
 .hero{background:var(--white)}
 .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero .ghost{position:absolute;top:-30.9%;width:71.6%;height:151.9%;object-fit:fill}
 .hero .ghost.l{left:-10.25%}
 .hero .ghost.r{left:38.3%;transform:rotate(180deg)}
 .hero .cut{position:absolute;left:16.1%;top:1.9%;width:67.7%;height:100.6%;object-fit:fill}
-.hero .logo{position:absolute;left:12.1%;top:16.3%;width:75.4%;height:64.8%;object-fit:fill;
-  opacity:0;animation:hero-logo 1.3s cubic-bezier(.22,.61,.36,1) .4s forwards}
-@keyframes hero-logo{from{opacity:0;transform:translateY(3%) scale(.96)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.hero .logo{opacity:1;animation:none}}
-.hero .toplogo{position:absolute;left:50%;top:3%;transform:translateX(-50%);width:4.4%;z-index:6;display:block}
-.hero .toplogo img{width:100%;height:auto;display:block}
+.hero .logo{position:absolute;left:12.1%;top:16.3%;width:75.4%;height:64.8%;object-fit:fill}
 .nav a{position:absolute;top:5.2%;font-size:1.37cqw;letter-spacing:.02em;text-transform:uppercase}
 .nav .home{left:5.9%}.nav .n-about{left:13.6%}.nav .shop{left:22.2%}.nav .contact{left:88.5%}
 .book{position:absolute;left:44.4%;top:82.7%;width:11.1%;height:7.3%;border-radius:999px;background:var(--orange);
   color:var(--white);font-weight:700;font-size:1.56cqw;display:flex;align-items:center;justify-content:center;letter-spacing:.02em;transition:background .2s}
 .book:hover{background:var(--ink);color:var(--white)}
-
-/* ── CAPTION SEPARATORS ── */
+.plate .motto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;margin:0;width:min(86%,900px);text-align:center;
+  font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;font-size:clamp(26px,3.6vw,54px);line-height:1.12;color:var(--white);text-shadow:0 2px 24px rgba(0,0,0,.45);text-wrap:balance}
+.plate .motto b{font-family:'Space Mono',monospace;font-style:normal;font-weight:700;color:var(--orange);letter-spacing:.02em}
+.plate .img::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.28);pointer-events:none}
+.services{background:transparent;padding:3.3% 2.6% 3.5%;display:flex;flex-direction:column;gap:3.6%}
+.work{position:relative;background:var(--orange);overflow:hidden;container-type:inline-size}
+.services .row{position:relative;z-index:1}
+.work .sa{position:absolute;top:-16%;width:71.6%;height:124%;pointer-events:none;z-index:0;opacity:.9}
+.work .sa.l{left:-10.25%}.work .sa.r{left:38.3%;transform:rotate(180deg)}
 .plate{margin:0;background:var(--cream)}
+.plate .img{position:relative;height:40vh;min-height:240px;overflow:hidden;background:var(--ink2)}
+.plate .img img{width:100%;height:100%;object-fit:cover;object-position:62% 42%;filter:grayscale(1) contrast(1.12) brightness(.95);display:block}
+.plate .img::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .plate figcaption{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 2.6%;border-top:1px solid var(--ink2);font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
 .plate figcaption .fig,.plate figcaption .no{color:var(--orange);font-weight:600}
 .plate figcaption .t{text-transform:none;letter-spacing:.08em;font-weight:400;font-size:12px}
 @media(max-width:560px){.plate figcaption{flex-direction:column;align-items:flex-start;gap:6px}}
-
-/* ── PHOTO SPREAD ── */
-.work{position:relative;background:var(--orange);overflow:hidden;container-type:inline-size}
-.work .sa{position:absolute;top:-16%;width:71.6%;height:124%;pointer-events:none;z-index:0;opacity:.9}
-.work .sa.l{left:-10.25%}.work .sa.r{left:38.3%;transform:rotate(180deg)}
+.runhead{position:relative;z-index:1;padding:clamp(22px,3cqw,40px) 2.6% clamp(4px,1cqw,14px);color:var(--white)}
+.runhead .labels>span:not(.dash){background:var(--orange);padding:.35em .6em}
+.runhead .rule{border-top:6px solid var(--white);border-bottom:1px solid var(--white);height:11px}
+.runhead .labels{display:flex;align-items:center;gap:16px;margin-top:14px;font-family:'Space Mono',monospace;font-size:clamp(12px,1.1cqw,14px);font-weight:700;letter-spacing:.25em;text-transform:uppercase;white-space:nowrap}
+.runhead .dash{flex:1;height:1px;background:var(--white);opacity:.7;min-width:24px}
+@media(max-width:640px){.runhead .opt{display:none}}
+.services .row{display:flex;gap:1.45%;flex:1;min-height:0}
+.card{background:var(--card);border-radius:1.3cqw;flex:1;overflow:hidden;min-width:0;min-height:0;position:relative}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.row.b .card:first-child{flex:400}.row.b .card:last-child{flex:557}
+.spread{padding:0}
+.spread .ribbon{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.spread .ribbon path{fill:none;stroke:var(--white);stroke-width:3.6cqw;stroke-linecap:round;vector-effect:none}
 .spread .ph{position:absolute;margin:0;overflow:hidden;z-index:2;background:var(--ink2);box-shadow:0 .6cqw 1.8cqw rgba(0,0,0,.18)}
 .spread .ph img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06)}
 .spread .p1{left:4%;top:34%;width:14.5%;height:40%}
@@ -54,10 +62,12 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 .spread .p3{left:42%;top:34%;width:24%;height:60%}
 .spread .p4{left:69%;top:34%;width:16%;height:46%}
 .spread .p5{left:87%;top:52%;width:10%;height:28%}
+.spread .sp-note{position:absolute;z-index:3;margin:0;font-family:'Space Mono',monospace;color:var(--ink2);background:var(--orange);padding:.5em .7em;line-height:1.5}
+.spread .sp-note.top{left:42%;top:9%;width:30%;font-size:max(12px,1.35cqw);font-weight:700}
+.spread .sp-note.bot{left:3.4%;top:77%;width:25%;font-size:max(12px,1.2cqw)}
+
 .spread .sp-quote{position:absolute;z-index:3;left:40%;top:9%;width:58%;margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;font-size:max(22px,3.9cqw);line-height:1.04;color:var(--ink2);text-wrap:balance}
 .spread .sp-quote b{font-family:'Space Mono',monospace;font-style:normal;font-weight:700;color:var(--ink2);letter-spacing:.02em}
-
-/* ── SHOP ── */
 .shop-sec{background:var(--cream);padding:clamp(28px,3.5vw,52px) 2.6% clamp(56px,7vw,110px);font-family:'Outfit',sans-serif;color:var(--ink2)}
 .shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(18px,2vw,28px);border-bottom:1px solid var(--ink2);padding-bottom:12px}
 .shop-head h2{margin:0;font-family:'Bodoni Moda',serif;font-weight:500;font-size:clamp(36px,5vw,72px);line-height:.85;letter-spacing:-.03em}
@@ -78,8 +88,6 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 .prod .buy:hover{color:var(--orange)}
 .shop-lead-copy{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:var(--white)}
 .shop-lead-copy p{margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2.2vw,32px);line-height:1.1}
-.shop-hint{display:none;align-items:center;gap:10px;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-.shop-hint::after{content:"";flex:0 0 40px;height:1px;background:var(--orange)}
 @media(max-width:820px){
   .shop-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -5.6%;padding:0 14% 14px;scrollbar-width:none}
   .shop-grid::-webkit-scrollbar{display:none}
@@ -88,9 +96,24 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
   .shop-hint{display:flex}
 }
 @media(max-width:520px){.shop-grid{padding-left:10%;padding-right:10%}.shop-grid .prod{flex-basis:80%}.shop-head{flex-direction:column;align-items:flex-start}.shop-head .meta{text-align:left}}
-
-/* ── ABOUT ── */
-.about{position:relative;background:var(--cream) url('assets/tee-marble.jpg') center/cover no-repeat;padding:clamp(36px,5vw,80px) clamp(16px,3vw,46px) clamp(48px,6vw,90px);overflow:hidden;border:48px solid var(--cream);font-family:'Outfit',sans-serif}
+.hero .crown{position:absolute;left:31.74%;top:8.51%;width:12.7%;height:23.09%;z-index:4;pointer-events:none;opacity:0;animation:hero-logo 1.1s cubic-bezier(.22,.61,.36,1) 1.2s forwards}
+@media(prefers-reduced-motion:reduce){.hero .crown{opacity:1;animation:none}}
+.hero .toplogo{position:absolute;left:50%;top:3%;transform:translateX(-50%);width:4.4%;z-index:6;display:block}
+.hero .toplogo img{width:100%;height:auto;display:block}
+.shop-hint{display:none;align-items:center;gap:10px;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+.shop-hint::after{content:"";flex:0 0 40px;height:1px;background:var(--orange)}
+.blank{background:var(--orange)}
+.hero .logo{opacity:0;animation:hero-logo 1.3s cubic-bezier(.22,.61,.36,1) .4s forwards}
+@keyframes hero-logo{from{opacity:0;transform:translateY(3%) scale(.96)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.hero .logo{opacity:1;animation:none}}
+:root{--cream:#F2EFE6;--ink2:#151818;--gris:#D4D5CF}
+.svc-marq{overflow:hidden;background:var(--cream);padding:14px 0;border-block:1.5px solid var(--ink2);font-family:'Outfit',sans-serif}
+.svc-marq .t{display:flex;white-space:nowrap;animation:svc-sc 26s linear infinite;will-change:transform}
+.svc-marq span{font-weight:800;font-size:clamp(15px,1.7vw,20px);letter-spacing:.14em;text-transform:uppercase;color:var(--orange);padding:0 16px}
+.svc-marq span::after{content:"/";margin-left:16px;color:var(--ink2);opacity:.35}
+@keyframes svc-sc{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.svc-marq .t{animation:none}}
+.about{position:relative;background:var(--cream) url('assets/tee-marble.png') center/cover no-repeat;padding:clamp(36px,5vw,80px) clamp(16px,3vw,46px) clamp(48px,6vw,90px);overflow:hidden;border:48px solid var(--cream);font-family:'Outfit',sans-serif}
 .about-stage{position:relative;max-width:1180px;margin:0 auto;min-height:clamp(520px,60vw,720px)}
 .about-tl{position:absolute;left:0;top:0;z-index:2;max-width:40ch}
 .about-mr{position:absolute;right:0;top:44%;z-index:2;max-width:40ch;text-align:right}
@@ -104,32 +127,36 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
   .about-tl,.about-mr{position:static;max-width:none;text-align:left}
   .about h2{font-size:clamp(34px,10vw,48px);margin-bottom:14px}
   .about p,.about-mr p{text-align:left;margin:0;max-width:none;font-size:16px;line-height:1.6}}
-
-/* ── FOOTER ── */
 .foot{background:var(--orange);color:var(--ink2);padding:clamp(40px,6vw,76px) clamp(16px,3vw,46px);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;font-family:'Outfit',sans-serif}
 .foot img{height:30px;opacity:.92}
 .foot .links{display:flex;gap:clamp(18px,2.4vw,30px);flex-wrap:wrap;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .foot .links a{color:var(--ink2);transition:color .2s}.foot .links a:hover{color:var(--white)}
 .foot .copy{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
 
-/* ── PHONE (≤640px) ── */
 @media(max-width:640px){
-  .frame.hero{aspect-ratio:auto;height:100vh;height:100svh;min-height:560px}
-  .hero .bg{object-position:40% 40%}
+  .frame.hero{aspect-ratio:auto;height:100vh;height:100svh;min-height:560px;max-height:none}
+  .hero .bg{object-fit:cover;object-position:40% 40%}
   .hero .ghost,.hero .cut{display:none}
+  .hero .ghost{width:92cqw;height:110cqw;top:auto}
+  .hero .ghost.l{left:-24cqw;top:14cqw}
+  .hero .ghost.r{left:36cqw;top:62cqw}
+  .hero .cut{left:-17cqw;top:auto;bottom:0;width:134cqw;height:112cqw}
   .hero .logo{left:4cqw;top:calc(50% - 22.24cqw);width:92cqw;height:44.47cqw}
+  .hero .crown{left:16.5cqw;top:calc(50% - 67.5cqw);width:20.5cqw;height:21cqw}
   .hero .toplogo{left:5cqw;top:5cqw;transform:none;width:11cqw}
   .nav{position:absolute;right:5cqw;top:3.4cqw;display:flex;gap:4cqw;z-index:6}
   .nav a{position:static;font-size:max(12px,3.3cqw);letter-spacing:.04em;display:inline-flex;align-items:center;min-height:44px}
   .book{left:50%;top:auto;bottom:8cqw;transform:translateX(-50%);width:auto;height:auto;min-height:46px;padding:0 30px;font-size:15px;z-index:6}
-  .frame.spread{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:28px 5% 36px}
+  .frame.services.spread{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:28px 5% 36px}
   .spread .sp-quote{position:relative;inset:auto;z-index:4;grid-column:1/-1;grid-row:2;align-self:center;justify-self:center;width:auto;max-width:88%;margin:0;text-align:center;font-size:max(24px,7.4cqw);color:var(--white);text-shadow:0 2px 18px rgba(0,0,0,.6)}
   .spread .sp-quote b{color:var(--orange);text-shadow:0 2px 14px rgba(0,0,0,.5)}
-  .spread .ph{position:relative;left:auto;top:auto;width:auto;height:auto;aspect-ratio:3/4}
   .spread .p1{grid-column:1;grid-row:1}.spread .p2{grid-column:2;grid-row:1}
-  .spread .p3{grid-column:1/-1;grid-row:2;aspect-ratio:1/1}
+  .spread .p3{grid-row:2}
   .spread .p3::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.32)}
   .spread .p4{grid-column:1;grid-row:3}.spread .p5{grid-column:2;grid-row:3}
+  .spread .ph{position:relative;left:auto;top:auto;width:auto;height:auto;aspect-ratio:3/4}
+  .spread .p3{grid-column:1/-1;aspect-ratio:1/1}
+  .spread .p5{aspect-ratio:3/4}
   .work .sa{width:120cqw;height:140cqw;top:20%}
   .work .sa.l{left:-50cqw}.work .sa.r{left:30cqw}
   .shop-sec{padding:28px 5% 24px}
@@ -143,13 +170,13 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 </head>
 <body>
 <section class="frame hero" data-screen-label="01 Hero">
-  <img class="bg" src="assets/canva/hero-bg-crown.jpg" alt="">
+  <img class="bg" src="assets/canva/hero-bg-crown.png" alt="">
   <img class="ghost l" src="assets/canva/a-ghost.png" alt="">
   <img class="ghost r" src="assets/canva/a-ghost.png" alt="">
   <img class="cut" src="assets/canva/hero-cutout-crown.png" alt="Client with combs in his hair">
   <img class="logo" src="assets/canva/logo-orange.png" alt="Skratch Studio">
-  <a class="toplogo" href="#" aria-label="Skratch Studio home"><img src="assets/iso-circle-black.png" alt=""></a>
-  <nav class="nav"><a class="home" href="#">Home</a><a class="n-about" href="#about">About</a><a class="shop" href="#shop">Shop</a><a class="contact" href="#">Contact</a></nav>
+  <a class="toplogo" href="#" aria-label="Skratch Studio home"><img src="assets/iso-circle-black.png" alt="Skratch Studio"></a>
+  <nav class="nav"><a class="home" href="#">Home</a><a class="n-about" href="#">About</a><a class="shop" href="#shop">Shop</a><a class="contact" href="#">Contact</a></nav>
   <a class="book" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">BOOK NOW</a>
 </section>
 <figure class="plate" role="separator">
@@ -158,28 +185,31 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 <div class="work">
 <img class="sa l" src="assets/canva/a-ghost.png" alt="">
 <img class="sa r" src="assets/canva/a-ghost.png" alt="">
-<section class="frame spread" data-screen-label="02 The Work">
+<div class="runhead" hidden>
+  <div class="labels"><span>N° 01</span><span class="dash"></span><span>The Work</span></div>
+</div>
+<section class="frame services spread" data-screen-label="02 Services">
   <p class="sp-quote">It’s not a copy, it’s building, from <b>SKRATCH.</b></p>
-  <figure class="ph p1"><img src="assets/canva/shop-0253.jpg" alt="Beard trim with clippers" style="object-position:40% 60%" loading="lazy"></figure>
-  <figure class="ph p2"><img src="assets/canva/shop-0252.jpg" alt="Barber at work, from behind" style="object-position:50% 25%" loading="lazy"></figure>
-  <figure class="ph p3"><img src="assets/canva/shop-0254.jpg" alt="Two barbers working in the studio" style="object-position:38% 50%" loading="lazy"></figure>
-  <figure class="ph p4"><img src="assets/canva/shop-0274.jpg" alt="Cutting wet hair with a red comb" style="object-position:45% 45%" loading="lazy"></figure>
-  <figure class="ph p5"><img src="assets/canva/shop-0256.jpg" alt="Beard trim and haircut in the studio" style="object-position:62% 50%" loading="lazy"></figure>
+  <figure class="ph p1"><img src="assets/canva/shop-0253.jpg" alt="Beard trim with clippers" style="object-position:40% 60%"></figure>
+  <figure class="ph p2"><img src="assets/canva/shop-0252.jpg" alt="Barber at work, from behind" style="object-position:50% 25%"></figure>
+  <figure class="ph p3"><img src="assets/canva/shop-0254.jpg" alt="Two barbers working in the studio" style="object-position:38% 50%"></figure>
+  <figure class="ph p4"><img src="assets/canva/shop-0274.jpg" alt="Cutting wet hair with a red comb" style="object-position:45% 45%"></figure>
+  <figure class="ph p5"><img src="assets/canva/shop-0256.jpg" alt="Beard trim and haircut in the studio" style="object-position:62% 50%"></figure>
 </section>
 </div>
 <section class="shop-sec" id="shop" data-screen-label="Shop">
   <div class="shop-head"><h2><em>The</em> Shop</h2><div class="meta"><b>N° 02</b> / Merch<br>Available in studio</div></div>
   <div class="shop-grid">
-    <figure class="prod lead"><div class="pic"><img src="assets/tee-marble.jpg" alt="Skratch Studio tee on a marble countertop" loading="lazy"><div class="shop-lead-copy"><p>Wear the chair home.</p></div></div></figure>
-    <figure class="prod"><div class="pic cut"><span class="tag">New</span><img src="assets/tee-hero.png" alt="Black Skratch Studio tee with gold logo" loading="lazy"></div><figcaption><span>Studio Tee — Black</span><span class="pr">€35</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
-    <figure class="prod"><div class="pic"><img src="assets/canva/shop-cap.jpg" alt="Black Skratch Studio cap with chrome logo" loading="lazy"></div><figcaption><span>Studio Cap — Black</span><span class="pr">€28</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
+    <figure class="prod lead"><div class="pic"><img src="assets/tee-marble.png" alt="Skratch Studio tee on a marble countertop"><div class="shop-lead-copy"><p>Wear the chair home.</p></div></div></figure>
+    <figure class="prod"><div class="pic cut"><span class="tag">New</span><img src="assets/tee-hero.png" alt="Black Skratch Studio tee with gold logo"></div><figcaption><span>Studio Tee — Black</span><span class="pr">€35</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
+    <figure class="prod"><div class="pic"><img src="assets/canva/shop-cap.jpg" alt="Black Skratch Studio cap with chrome logo"></div><figcaption><span>Studio Cap — Black</span><span class="pr">€28</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
   </div>
   <div class="shop-hint">Swipe →</div>
 </section>
 <figure class="plate" role="separator" data-screen-label="About divider">
   <figcaption><span><span class="fig">Fig. 02</span> — <span class="t">The chair, the comb, the craft</span></span><span><b class="no">N° 03</b> / About Us</span></figcaption>
 </figure>
-<section class="about" id="about" data-screen-label="03 About">
+<section class="about" data-screen-label="03 About">
   <div class="about-stage">
     <div class="about-tl">
       <h2>The Craft</h2>
@@ -193,7 +223,7 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 </section>
 <footer class="foot" data-screen-label="Footer">
   <img src="assets/wordmark-black.png" alt="Skratch Studio">
-  <div class="links"><a href="#">Services</a><a href="#about">About</a><a href="#">Contact</a><a href="#">Instagram</a></div>
+  <div class="links"><a href="#">Services</a><a href="#">About</a><a href="#">Contact</a><a href="#">Instagram</a></div>
   <div class="copy">© 2026 Skratch Studio — Vilnius</div>
 </footer>
 </body>
