@@ -59,11 +59,6 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 
 /* ── SHOP ── */
 .shop-sec{background:var(--cream);padding:clamp(28px,3.5vw,52px) 2.6% clamp(56px,7vw,110px);font-family:'Outfit',sans-serif;color:var(--ink2)}
-.shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(18px,2vw,28px);border-bottom:1px solid var(--ink2);padding-bottom:12px}
-.shop-head h2{margin:0;font-family:'Bodoni Moda',serif;font-weight:500;font-size:clamp(36px,5vw,72px);line-height:.85;letter-spacing:-.03em}
-.shop-head h2 em{font-style:italic}
-.shop-head .meta{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;text-align:right;line-height:1.8}
-.shop-head .meta b{color:var(--orange);font-weight:600}
 .shop-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px}
 .prod{margin:0;display:flex;flex-direction:column;gap:12px}
 .prod .pic{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--card)}
@@ -79,18 +74,18 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 .shop-lead-copy{position:absolute;left:0;right:0;bottom:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:var(--white)}
 .shop-lead-copy p{margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2.2vw,32px);line-height:1.1}
 .shop-hint{display:none;align-items:center;gap:10px;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-.shop-hint::after{content:"";flex:0 0 40px;height:1px;background:var(--orange)}
+.shop-hint{justify-content:space-between}
+.shop-hint .dots{display:flex;gap:6px}.shop-hint .dots i{width:7px;height:7px;border-radius:50%;background:var(--ink2);opacity:.25;transition:.2s}.shop-hint .dots i.on{opacity:1;background:var(--orange)}
 @media(max-width:820px){
-  .shop-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -5.6%;padding:0 14% 14px;scrollbar-width:none}
+  .shop-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -5.6%;padding:0 5.6% 14px;scroll-padding:0 5.6%;gap:11.2%;scrollbar-width:none}
   .shop-grid::-webkit-scrollbar{display:none}
-  .shop-grid .prod{flex:0 0 72%;scroll-snap-align:center}
+  .shop-grid .prod{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
   .prod.lead .pic{min-height:0;height:auto;aspect-ratio:4/5}
-  .shop-hint{display:flex}
+  .shop-sec .shop-hint{display:flex}
 }
-@media(max-width:520px){.shop-grid{padding-left:10%;padding-right:10%}.shop-grid .prod{flex-basis:80%}.shop-head{flex-direction:column;align-items:flex-start}.shop-head .meta{text-align:left}}
 
 /* ── ABOUT ── */
-.about{position:relative;background:var(--cream) url('assets/tee-marble.jpg') center/cover no-repeat;padding:clamp(36px,5vw,80px) clamp(16px,3vw,46px) clamp(48px,6vw,90px);overflow:hidden;border:48px solid var(--cream);font-family:'Outfit',sans-serif}
+.about{position:relative;background:linear-gradient(rgba(21,24,24,.38),rgba(21,24,24,.38)),url('assets/canva/shop-0256.jpg') 50% 45%/cover no-repeat,var(--cream);padding:clamp(36px,5vw,80px) clamp(16px,3vw,46px) clamp(48px,6vw,90px);overflow:hidden;border:48px solid var(--cream);font-family:'Outfit',sans-serif}
 .about-stage{position:relative;max-width:1180px;margin:0 auto;min-height:clamp(520px,60vw,720px)}
 .about-tl{position:absolute;left:0;top:0;z-index:2;max-width:40ch}
 .about-mr{position:absolute;right:0;top:44%;z-index:2;max-width:40ch;text-align:right}
@@ -115,7 +110,7 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 /* ── PHONE (≤640px) ── */
 @media(max-width:640px){
   .frame.hero{aspect-ratio:auto;height:100vh;height:100svh;min-height:560px}
-  .hero .bg{object-position:40% 40%}
+  .hero .bg{object-position:50% 40%}
   .hero .ghost,.hero .cut{display:none}
   .hero .logo{left:4cqw;top:calc(50% - 22.24cqw);width:92cqw;height:44.47cqw}
   .hero .toplogo{left:5cqw;top:5cqw;transform:none;width:11cqw}
@@ -167,17 +162,19 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
   <figure class="ph p5"><img src="assets/canva/shop-0256.jpg" alt="Beard trim and haircut in the studio" style="object-position:62% 50%" loading="lazy"></figure>
 </section>
 </div>
+<figure class="plate" role="separator" data-screen-label="Shop divider">
+  <figcaption><span><span class="fig">Fig. 02</span> — <span class="t">The Shop</span></span><span><b class="no">N° 02</b> / Merch</span></figcaption>
+</figure>
 <section class="shop-sec" id="shop" data-screen-label="Shop">
-  <div class="shop-head"><h2><em>The</em> Shop</h2><div class="meta"><b>N° 02</b> / Merch<br>Available in studio</div></div>
   <div class="shop-grid">
-    <figure class="prod lead"><div class="pic"><img src="assets/tee-marble.jpg" alt="Skratch Studio tee on a marble countertop" loading="lazy"><div class="shop-lead-copy"><p>Wear the chair home.</p></div></div></figure>
+    <figure class="prod lead"><div class="pic"><img src="assets/canva/shop-tee-lifestyle.jpg" alt="Skratch Studio tee with chrome logo on dark orange marble" style="object-position:58% 50%" loading="lazy"><div class="shop-lead-copy"><p>Wear the chair home.</p></div></div></figure>
     <figure class="prod"><div class="pic cut"><span class="tag">New</span><img src="assets/tee-hero.png" alt="Black Skratch Studio tee with gold logo" loading="lazy"></div><figcaption><span>Studio Tee — Black</span><span class="pr">€35</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
     <figure class="prod"><div class="pic"><img src="assets/canva/shop-cap.jpg" alt="Black Skratch Studio cap with chrome logo" loading="lazy"></div><figcaption><span>Studio Cap — Black</span><span class="pr">€28</span></figcaption><a class="buy" href="https://skratchstudio.setmore.com" target="_blank" rel="noopener">Reserve</a></figure>
   </div>
-  <div class="shop-hint">Swipe →</div>
+  <div class="shop-hint"><span class="dots"><i class="on"></i><i></i><i></i></span><span>Swipe ←</span></div>
 </section>
 <figure class="plate" role="separator" data-screen-label="About divider">
-  <figcaption><span><span class="fig">Fig. 02</span> — <span class="t">The chair, the comb, the craft</span></span><span><b class="no">N° 03</b> / About Us</span></figcaption>
+  <figcaption><span><span class="fig">Fig. 03</span> — <span class="t">The chair, the comb, the craft</span></span><span><b class="no">N° 03</b> / About Us</span></figcaption>
 </figure>
 <section class="about" id="about" data-screen-label="03 About">
   <div class="about-stage">
@@ -193,8 +190,12 @@ a{color:var(--orange);text-decoration:none}a:hover{color:var(--ink)}
 </section>
 <footer class="foot" data-screen-label="Footer">
   <img src="assets/wordmark-black.png" alt="Skratch Studio">
-  <div class="links"><a href="#">Services</a><a href="#about">About</a><a href="#">Contact</a><a href="#">Instagram</a></div>
+  <div class="links"><a href="https://skratchstudio.setmore.com" target="_blank" rel="noopener noreferrer">Book now</a><a href="#about">About</a><a href="#">Contact</a><a href="https://www.instagram.com/skratch.studio_/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
   <div class="copy">© 2026 Skratch Studio — Vilnius</div>
 </footer>
+<script>
+(function(){const g=document.querySelector('.shop-grid'),d=[...document.querySelectorAll('.shop-hint .dots i')];if(!g||!d.length)return;
+g.addEventListener('scroll',()=>{const i=Math.round(g.scrollLeft/g.clientWidth);d.forEach((e,k)=>e.classList.toggle('on',k===i))},{passive:true});})();
+</script>
 </body>
 </html>
